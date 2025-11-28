@@ -4,11 +4,11 @@ import * as Yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { createNote } from "../../services/noteService";
-import type { CreateNotesNew } from "../../types/note";
+import type { NoteFormData } from "../../types/note";
 import toast from "react-hot-toast";
 import css from "./NoteForm.module.css";
 
-const initialValues: CreateNotesNew = {
+const initialValues: NoteFormData = {
   title: "",
   content: "",
   tag: "Todo",
@@ -52,8 +52,8 @@ export default function NoteForm({ onClose }: NoteFormProps) {
   });
 
   const handleSubmit = (
-    values: CreateNotesNew,
-    actions: FormikHelpers<CreateNotesNew>
+    values: NoteFormData,
+    actions: FormikHelpers<NoteFormData>
   ) => {
     actions.resetForm();
     mutation.mutate(values);
