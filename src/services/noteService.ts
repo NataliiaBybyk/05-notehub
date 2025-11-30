@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import type { Note, CreateNotesNew } from "../types/note";
+import type { Note, NoteFormData } from "../types/note";
 
 const API = "https://notehub-public.goit.study/api";
 
@@ -31,7 +31,7 @@ export const fetchNotes = async ({
 };
 
 //createNote: має виконувати запит для створення нової нотатки на сервері. Приймає вміст нової нотатки та повертає створену нотатку у відповіді;
-export const createNote = async (newNote: CreateNotesNew): Promise<Note> => {
+export const createNote = async (newNote: NoteFormData): Promise<Note> => {
   const res = await axios.post<Note>(`${API}/notes`, newNote, {
     headers: { Authorization: `Bearer ${TOKEN}` },
   });
